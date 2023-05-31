@@ -3,10 +3,10 @@ package org.example.gradecalculator;
 import java.util.List;
 
 public class GradeCalculator {
-    private final List<Course> courses;
+    private final Courses courses;
 
     public GradeCalculator(List<Course> courses) {
-        this.courses = courses;
+        this.courses = new Courses(courses);
     }
 
     /**
@@ -15,15 +15,8 @@ public class GradeCalculator {
      * • 일급 컬렉션 사용
      */
     public double calculateGrade() {
-        double multipleiedCreditAndCourseGrade = 0;
-
-        for (Course course : courses) {
-            multipleiedCreditAndCourseGrade += course.multipleiedCreditAndCourseGrade();
-        }
-
-        int totalCompletedCredit = courses.stream()
-                .mapToInt(Course::getCredit)
-                .sum();
+        double multipleiedCreditAndCourseGrade = courses.multiplyCreditAndCourseGrade();
+        int totalCompletedCredit = courses.calculateTotalCompledtedCredit();
 
         return multipleiedCreditAndCourseGrade / totalCompletedCredit;
     }
