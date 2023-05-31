@@ -18,7 +18,7 @@ public class GradeCalculator {
         double multipleiedCreditAndCourseGrade = 0;
 
         for (Course course : courses) {
-            multipleiedCreditAndCourseGrade += course.getCredit() * course.getGradeToNumber();
+            multipleiedCreditAndCourseGrade += course.multipleiedCreditAndCourseGrade();
         }
 
         int totalCompletedCredit = courses.stream()
